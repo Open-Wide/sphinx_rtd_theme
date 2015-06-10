@@ -97,9 +97,11 @@
   .align-center
     margin: auto
     display: block
+  p.caption
+    @extend h2
 
   // This is the #href that shows up on hover. Sphinx's is terrible so I hack it away.
-  h1, h2, h3, h4, h5, h6, dl dt
+  h1, h2, h3, h4, h5, h6, dl dt, p.caption
     .headerlink
       display: none
       visibility: hidden
@@ -186,7 +188,7 @@
       padding-left: 0
 
   // These are the "literals" that get spit out when you mark stuff as ``code`` as your write.
-  tt
+  tt, code
     @extend code
     color: $black
     big, em
@@ -196,7 +198,7 @@
     .xref, a &
       font-weight: bold
   // If the literal is inside an a tag, let's color it like a link
-  a tt
+  a tt, a code
     color: $link-color
   dl
     margin-bottom: $base-line-height
@@ -244,7 +246,7 @@
     dt:first-child
       margin-top: 0
     // Since dts get the callout style, we treat this less as callouts.
-    tt
+    tt, code
       font-weight: bold
       &.descname, &.descclassname
         background-color: transparent
@@ -274,6 +276,24 @@
   p.rubric
     margin-bottom: 12px
     font-weight: bold
+  //Download link
+  code.download
+    background: inherit
+    padding: inherit
+    font-family: inherit
+    font-size: inherit
+    color: inherit
+    border: inherit
+    white-space: inherit
+    span:first-child
+      @extend .fa
+      @extend .fa-download
+      &:before
+        margin-right: 4px
+  .wy-table-responsive
+    table
+      td
+        white-space: normal
 
 // Mobile specific
 +media($mobile)

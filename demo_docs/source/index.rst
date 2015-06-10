@@ -14,9 +14,17 @@ Contents:
 
 .. toctree::
     :maxdepth: 2
+    :caption: Sweet Docs
 
     demo
     list
+
+.. toctree::
+    :maxdepth: 2
+    :caption: This is an incredibly long caption for a long menu
+
+    long
+    api
 
 Maaaaath!
 =========
@@ -49,14 +57,6 @@ Giant tables
 +------------+------------+-----------+------------+------------+-----------+------------+------------+-----------+------------+------------+-----------+
 | body row 1 | column 2   | column 3  | body row 1 | column 2   | column 3  | body row 1 | column 2   | column 3  | body row 1 | column 2   | column 3  |
 +------------+------------+-----------+------------+------------+-----------+------------+------------+-----------+------------+------------+-----------+
-
-API Test
-========
-
-.. automodule:: test_py_module.test
-    :members:
-    :private-members:
-    :special-members:
 
 Optional parameter args
 -----------------------
@@ -215,3 +215,8 @@ Citation
 Here I am making a citation [1]_
 
 .. [1] This is the citation I made, let's make this extremely long so that we can tell that it doesn't follow the normal responsive table stuff.
+
+Download links
+==============
+
+:download:`This long long long long long long long long long long long long long long long download link should be blue with icon, and should wrap white-spaces <static/yi_jing_01_chien.jpg>`

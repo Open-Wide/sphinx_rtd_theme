@@ -1,0 +1,67 @@
+.tag {
+    display: inline;
+    padding: .2em .6em .3em;
+    font-size: 75%;
+    font-weight: bold;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+}
+a.tag:hover,
+a.tag:focus {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+.tag:empty {
+    display: none;
+}
+.btn .tag {
+    position: relative;
+    top: -1px;
+}
+.tag-default {
+    background-color: #777;
+}
+.tag-default[href]:hover,
+.tag-default[href]:focus {
+    background-color: #5e5e5e;
+}
+.tag-primary {
+    background-color: #337ab7;
+}
+.tag-primary[href]:hover,
+.tag-primary[href]:focus {
+    background-color: #286090;
+}
+.tag-success {
+    background-color: #5cb85c;
+}
+.tag-success[href]:hover,
+.tag-success[href]:focus {
+    background-color: #449d44;
+}
+.tag-info {
+    background-color: #5bc0de;
+}
+.tag-info[href]:hover,
+.tag-info[href]:focus {
+    background-color: #31b0d5;
+}
+.tag-warning {
+    background-color: #f0ad4e;
+}
+.tag-warning[href]:hover,
+.tag-warning[href]:focus {
+    background-color: #ec971f;
+}
+.tag-danger {
+    background-color: #d9534f;
+}
+.tag-danger[href]:hover,
+.tag-danger[href]:focus {
+    background-color: #c9302c;
+}

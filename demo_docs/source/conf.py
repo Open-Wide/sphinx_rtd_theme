@@ -15,6 +15,7 @@ import sys, os
 
 sys.path.append(os.path.abspath('.'))
 sys.path.append(os.path.abspath('./test_py_module'))
+sys.path.append(os.path.abspath('./../../sphinx_rtd_theme/ext'))
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -32,6 +33,8 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.mathjax',
     'sphinx.ext.viewcode',
+    'awesome',
+    'tag',
 ]
 
 # Math

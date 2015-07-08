@@ -43,6 +43,34 @@ Here is another:
     \frac{1}{r^2 \sin^2\theta} \frac{\partial^2 f}{\partial \phi^2}
 
 
+Awesome font
+============
+
+http://fortawesome.github.io/Font-Awesome/
+
+:awesome:`camera-retro` fa-camera-retro
+
+:awesome:`camera-retro fa-lg` fa-lg
+
+:awesome:`camera-retro fa-2x` fa-2x
+
+:awesome:`camera-retro fa-3x` fa-3x
+
+:awesome:`camera-retro fa-4x` fa-4x
+
+:awesome:`camera-retro fa-5x` fa-5x
+
+Animated Icons :awesome:`spinner fa-spin fa-2x`
+:awesome:`circle-o-notch fa-spin fa-2x`
+:awesome:`refresh fa-spin fa-2x`
+:awesome:`cog fa-spin fa-2x`
+:awesome:`spinner fa-pulse fa-2x`
+
+Tags
+====
+
+:tag:`default` :tag:`default::default` :tag:`primary::primary` :tag:`success::success` :tag:`info::info` :tag:`warning::warning` :tag:`danger::danger` 
+
 Giant tables
 ============
 

@@ -319,6 +319,9 @@ h1, .rst-content h1
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1) inset
   border-radius: 5px
   font-family: "CHEVINLight", "Roboto Slab", "Georgia", Arial, sans-serif
+  margin: 0 -1.6em 1em
+  padding: 1.2em 1.5em
+  border-radius: 0
 
 h2, .rst-content h2
   font-family: "CHEVINLight", "Roboto Slab", "Georgia", Arial, sans-serif
@@ -344,5 +347,11 @@ code, .rst-content tt, .rst-content code
 .wy-nav-content
   background: #FFF
 
-.wy-side-nav-search
+.wy-side-nav-search, .wy-nav-top
   background: $title_color
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1) inset
+  a
+    text-shadow: 0 1px 1px rgba(85, 85, 85, 0.55)
+
+.fa-arrow-circle-left::before, .fa-arrow-circle-right::before
+  color: $title_color

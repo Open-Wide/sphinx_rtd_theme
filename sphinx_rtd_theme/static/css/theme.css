@@ -5037,6 +5037,9 @@ h1, .rst-content h1 {
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1) inset;
   border-radius: 5px;
   font-family: "CHEVINLight", "Roboto Slab", "Georgia", Arial, sans-serif;
+  margin: 0 -1.6em 1em;
+  padding: 1.2em 1.5em;
+  border-radius: 0;
 }
 
 h2, .rst-content p.caption, .rst-content h2, .rst-content p.caption {
@@ -5069,8 +5072,16 @@ code, .rst-content tt, .rst-content code, .rst-content tt, .rst-content tt, .rst
   background: #FFF;
 }
 
-.wy-side-nav-search {
+.wy-side-nav-search, .wy-nav-top {
   background: #0c96c7;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1) inset;
+}
+.wy-side-nav-search a, .wy-nav-top a {
+  text-shadow: 0 1px 1px rgba(85, 85, 85, 0.55);
+}
+
+.fa-arrow-circle-left::before, .icon-circle-arrow-left::before, .fa-arrow-circle-right::before, .icon-circle-arrow-right::before {
+  color: #0c96c7;
 }
 
 span[id*='MathJax-Span'] {

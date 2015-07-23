@@ -1,0 +1,36 @@
+%
+% openwide.sty
+%
+% Override configuration from sphinx.sty for OpenWide
+%
+
+\ProvidesPackage{ow}[2015/07/17 LaTeX package (Open Wide)]
+
+\usepackage{xcolor}
+\usepackage{sectsty}
+
+\usepackage{titlesec}
+\usepackage{color}
+\usepackage{eso-pic}
+
+\definecolor{TitleColor}{RGB}{14, 153, 199}
+\definecolor{NormalColor}{RGB}{0, 0, 0}
+\definecolor{SectionColor}{RGB}{14, 153, 199}
+\definecolor{ChapterColor}{RGB}{255, 255, 255}
+\sectionfont{\color{SectionColor}}  % sets colour of sections
+
+\titlespacing{\chapter}{0pt}{-4em}{5.0em}
+
+\newcommand\chapterBox{%
+  \put(0,0){%
+    \parbox[b][\paperheight]{\paperwidth}{%
+      \color{SectionColor}\rule{\paperwidth}{4cm} %*
+      \vfill
+    }
+}}
+
+\titleformat{\chapter}[display]
+            {\LARGE\sffamily\bfseries\raggedright\color{ChapterColor}}
+            {\leftskip2cm\Large\textmd{\color{ChapterColor}\chaptertitlename~\thechapter}}
+            {0cm}
+            {\AddToShipoutPicture*{\chapterBox}\leftskip2cm}

@@ -30,4 +30,4 @@ def setup(app):
     app.add_stylesheet('css/tag.css')
     
     app.add_role('awesome', awesome_role)
-    app.add_stylesheet('http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css')
+    app.add_stylesheet('http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css')

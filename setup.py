@@ -24,7 +24,8 @@ setup(
         '*.html',
         'static/css/*.css',
         'static/js/*.js',
-        'static/font/*.*'
+        'static/font/*.*',
+        'texinputs/*.*',
     ]},
     include_package_data=True,
     install_requires=open('requirements.txt').read().splitlines(),

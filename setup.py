@@ -25,6 +25,7 @@ setup(
         'static/css/*.css',
         'static/js/*.js',
         'static/font/*.*',
+        'static/images/*.*',
         'texinputs/*.*',
     ]},
     include_package_data=True,

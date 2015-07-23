@@ -23,6 +23,11 @@ def awesome_role(name, rawtext, text, lineno, inliner, options={}, content=[]):
     awesome_tag = '<i class="fa fa-%s"></i>' % utils.unescape(text)
     raw = nodes.raw('', awesome_tag, format='html')
     return [raw], []
+
+def clear_role(name, rawtext, text, lineno, inliner, options={}, content=[]):
+    clear_both_tag = '<div class="clear-%s"></div>' % utils.unescape(text)
+    raw = nodes.raw('', clear_both_tag, format='html')
+    return [raw], []
  
  
 def setup(app):
@@ -31,3 +36,6 @@ def setup(app):
     
     app.add_role('awesome', awesome_role)
     app.add_stylesheet('http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css')
+    
+    app.add_role('clear', clear_role)
+    app.add_stylesheet('css/clear.css')

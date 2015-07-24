@@ -4,7 +4,7 @@
 % Override configuration from sphinx.sty for OpenWide
 %
 
-\ProvidesPackage{ow}[2015/07/17 LaTeX package (Open Wide)]
+\ProvidesPackage{openwide}[2015/07/17 LaTeX package (Open Wide)]
 
 \usepackage{xcolor}
 \usepackage{sectsty}
@@ -13,24 +13,123 @@
 \usepackage{color}
 \usepackage{eso-pic}
 
-\definecolor{TitleColor}{RGB}{14, 153, 199}
-\definecolor{NormalColor}{RGB}{0, 0, 0}
-\definecolor{SectionColor}{RGB}{14, 153, 199}
-\definecolor{ChapterColor}{RGB}{255, 255, 255}
-\sectionfont{\color{SectionColor}}  % sets colour of sections
+%%%%%%%
+% FONTS
+%%%%%%%
+% https://en.wikibooks.org/wiki/LaTeX/Fonts#Introduction
+\renewcommand*\rmdefault{lmr}
+\renewcommand*\sffamily{lmss}
+\renewcommand*\ttfamily{lmtt}
 
+%%%%%%%%%%
+% COULEURS
+%%%%%%%%%%
+% http://latexcolor.com/
+
+\definecolor{owgrey}{HTML}{808080}
+\definecolor{owblue}{HTML}{0C96C7}
+\definecolor{owwhite}{HTML}{FFFFFF}
+\definecolor{ownormal}{HTML}{000000}
+
+\colorlet{TitleColor}{owblue}
+\colorlet{NormalColor}{ownormal}
+\colorlet{ChapterColor}{owwhite}
+\colorlet{SectionColor}{owblue}
+\colorlet{SubSectionColor}{owgrey}
+\colorlet{SubSubSectionColor}{owgrey}
+\colorlet{InnerLinkColor}{owblue}
+\colorlet{OuterLinkColor}{owblue}
+
+\definecolor{VerbatimColor}{rgb}{1,1,1}
+\colorlet{VerbatimBorderColor}{owgrey}
+
+% Redefine title positionning
 \titlespacing{\chapter}{0pt}{-4em}{5.0em}
 
-\newcommand\chapterBox{%
-  \put(0,0){%
-    \parbox[b][\paperheight]{\paperwidth}{%
-      \color{SectionColor}\rule{\paperwidth}{4cm} %*
-      \vfill
-    }
-}}
-
+% Redefine title colors
 \titleformat{\chapter}[display]
             {\LARGE\sffamily\bfseries\raggedright\color{ChapterColor}}
             {\leftskip2cm\Large\textmd{\color{ChapterColor}\chaptertitlename~\thechapter}}
             {0cm}
             {\AddToShipoutPicture*{\chapterBox}\leftskip2cm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+% NUMÉROTATION DES TITRES
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\setcounter{secnumdepth}{6}
+
+%%%%%%%%%%%%%%%%%%
+% STYLE DES TITRES
+%%%%%%%%%%%%%%%%%%
+
+
+\renewcommand{\section}{%
+    \@startsection%
+    {section}% nom du titre
+    {1}% niveau de titre
+    {0em}% indentation
+    {-3.5em\@plus 1em \@minus .2em}%  espace vertical avant
+    {1em\@plus .2em}% espace vertical après
+    {\normalfont\huge\bfseries\color{SectionColor}}%  allure du titre
+}%
+
+\renewcommand{\subsection}{%
+    \@startsection%
+    {subsection}%
+    {2}%
+    {1em}%
+    {-2.5em\@plus 1em \@minus .2em}%
+    {1em\@plus .2em}%
+    {\normalfont\LARGE\bfseries\color{SubSectionColor}}%
+}%
+
+\renewcommand{\subsubsection}{%
+    \@startsection%
+    {subsubsection}%
+    {3}%
+    {2em}%
+    {-2em\@plus 1em \@minus .2em}%
+    {1em\@plus .2em}%
+    {\normalfont\Large\bfseries\color{SubSubSectionColor}}%
+}%
+
+\renewcommand{\paragraph}{%
+    \@startsection%
+    {paragraph}%
+    {5}%
+    {3em}%
+    {-\baselineskip}%
+    {.5\baselineskip}%
+    {\normalfont\normalsize\bfseries}%
+}%
+
+\renewcommand{\subparagraph}{%
+    \@startsection%
+    {subparagraph}%
+    {6}%
+    {3.5em}%
+    {-\baselineskip}%
+    {.5\baselineskip}%
+    {\normalfont\normalsize\bfseries}%
+}%
+
+% Background on the top of the page
+\newcommand\chapterBox{%
+  \put(0,0){%
+    \parbox[b][\paperheight]{\paperwidth}{%
+      \color{SectionColor}\rule{\paperwidth}{11em} %*
+      \vfill
+    }
+}}
+
+%%%%%
+% TOC
+%%%%%
+
+\def\toclevel@subsubsubsection{4}
+\def\toclevel@paragraph{5}
+\def\toclevel@paragraph{6}
+\def\l@subsubsubsection{\@dottedtocline{4}{7em}{4em}}
+\def\l@paragraph{\@dottedtocline{5}{10em}{5em}}
+\def\l@subparagraph{\@dottedtocline{6}{14em}{6em}}
+

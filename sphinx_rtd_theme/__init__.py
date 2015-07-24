@@ -5,6 +5,7 @@ From https://github.com/ryan-roemer/sphinx-bootstrap-theme.
 """
 from os import path
 from sphinx_rtd_theme import directives
+from sphinx_rtd_theme.extensions import latex_mods
 
 VERSION = (0, 1, 8)
 
@@ -21,7 +22,10 @@ def get_html_theme_path():
 def get_latex_theme_files():
     """Return list of HTML theme paths."""
     cur_dir = path.abspath(path.dirname(path.dirname(__file__)))
-    return [path.join(cur_dir, 'sphinx_rtd_theme', 'texinputs', 'openwide.sty')]
+    return [
+        path.join(cur_dir, 'sphinx_rtd_theme', 'texinputs', 'openwide.sty'),
+        path.join(cur_dir, 'sphinx_rtd_theme', 'texinputs', 'openwide_sphinx.sty')
+    ]
 
 def setup(app):
     directives.setup(app)

@@ -8,10 +8,12 @@
 
 \usepackage{xcolor}
 \usepackage{sectsty}
-
+\usepackage{tikz}
 \usepackage{titlesec}
 \usepackage{color}
 \usepackage{eso-pic}
+\usepackage{blindtext}
+\usepackage{graphicx}
 
 %%%%%%%
 % FONTS
@@ -21,6 +23,8 @@
 \renewcommand*\sffamily{lmss}
 \renewcommand*\ttfamily{lmtt}
 
+\setlength{\headheight}{15pt}
+
 %%%%%%%%%%
 % COULEURS
 %%%%%%%%%%
@@ -28,6 +32,8 @@
 
 \definecolor{owgrey}{HTML}{808080}
 \definecolor{owblue}{HTML}{0C96C7}
+\definecolor{owbgblue}{HTML}{0C96C7}
+\definecolor{owdbblue}{HTML}{F5F5F5}
 \definecolor{owwhite}{HTML}{FFFFFF}
 \definecolor{ownormal}{HTML}{000000}
 
@@ -40,18 +46,18 @@
 \colorlet{InnerLinkColor}{owblue}
 \colorlet{OuterLinkColor}{owblue}
 
-\definecolor{VerbatimColor}{rgb}{1,1,1}
+\colorlet{VerbatimColor}{owdbblue}
 \colorlet{VerbatimBorderColor}{owgrey}
 
 % Redefine title positionning
-\titlespacing{\chapter}{0pt}{-4em}{5.0em}
+%\titlespacing{\chapter}{0pt}{-4em}{5.0em}
 
 % Redefine title colors
-\titleformat{\chapter}[display]
-            {\LARGE\sffamily\bfseries\raggedright\color{ChapterColor}}
-            {\leftskip2cm\Large\textmd{\color{ChapterColor}\chaptertitlename~\thechapter}}
-            {0cm}
-            {\AddToShipoutPicture*{\chapterBox}\leftskip2cm}
+%\titleformat{\chapter}[display]
+%            {\LARGE\sffamily\bfseries\raggedright\color{ChapterColor}}
+%            {\leftskip2cm\Large\textmd{\color{ChapterColor}\chaptertitlename~\thechapter}}
+%            {0cm}
+%            {\AddToShipoutPicture*{\chapterBox}\leftskip2cm}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
 % NUMÉROTATION DES TITRES
@@ -61,6 +67,52 @@
 %%%%%%%%%%%%%%%%%%
 % STYLE DES TITRES
 %%%%%%%%%%%%%%%%%%
+
+%\newcommand*{\chapnumfont}{\normalfont\sffamily\huge\bfseries}
+
+\def\thickhrulefill{\leavevmode \leaders \hrule height 1ex \hfill \kern \z@}
+\def\@makechapterhead#1{%
+    \reset@font
+    \hbox{%
+        \vbox{%
+            \hsize=6em%
+            \begin{tabular}{c}
+                \scshape \strut \color{owbgblue} \@chapapp{} \\
+                \colorbox{owbgblue}{\vbox{\hbox{\vbox to 1mm{}}\hbox{\color{white} \LARGE \bfseries \hspace{1mm}\thechapter\hspace{1mm}}\hbox{\vbox to 6em{}}}}%
+            \end{tabular}%
+            }%
+        \vbox{%
+            \advance\hsize by -6em
+            \par
+            \vskip 1em%
+            %\hspace{0em}%
+            \parbox{50em}{%
+                \color{owbgblue} \Huge \scshape #1}%
+            }%
+        }%
+    \vskip 20\p@
+}
+\def\@makeschapterhead#1{%
+    \reset@font
+    \hbox{%
+        \vbox{%
+            \hsize=6em%
+            \begin{tabular}{c}
+                %scshape \strut \color{owbgblue} \phantom{@chapapp{}} \\
+                \colorbox{owbgblue}{\vbox{\hbox{\vbox to 1mm{}}\hbox{\color{white} \LARGE \bfseries \hspace{1mm}\phantom{\thechapter}\hspace{1mm}}\hbox{\vbox to 6em{}}}}%
+            \end{tabular}%
+            }%
+        \vbox{%
+            \advance\hsize by -6em
+            \par
+            \vskip 1em%
+            %\hspace{0em}%
+            \parbox{50em}{%
+                \color{owbgblue} \Huge \scshape #1}%
+            }%
+        }%
+    \vskip 20\p@
+}
 
 
 \renewcommand{\section}{%
@@ -114,13 +166,13 @@
 }%
 
 % Background on the top of the page
-\newcommand\chapterBox{%
-  \put(0,0){%
-    \parbox[b][\paperheight]{\paperwidth}{%
-      \color{SectionColor}\rule{\paperwidth}{11em} %*
-      \vfill
-    }
-}}
+%\newcommand\chapterBox{%
+%  \put(0,0){%
+%    \parbox[b][\paperheight]{\paperwidth}{%
+%      \color{SectionColor}\rule{\paperwidth}{11em} %*
+%      \vfill
+%    }
+%}}
 
 %%%%%
 % TOC

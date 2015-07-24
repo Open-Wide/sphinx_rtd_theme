@@ -18,7 +18,7 @@ setup(
     description='ReadTheDocs.org theme for Sphinx, 2013 version.',
     long_description=open('README.rst').read(),
     zip_safe=False,
-    packages=['sphinx_rtd_theme'],
+    packages=['sphinx_rtd_theme', 'sphinx_rtd_theme.extensions'],
     package_data={'sphinx_rtd_theme': [
         'theme.conf',
         '*.html',

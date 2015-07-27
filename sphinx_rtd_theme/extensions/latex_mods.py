@@ -24,14 +24,15 @@ class LaTeXRTDTranslator(BaseTranslator):
         BaseTranslator.__init__(self, document, builder)
         if builder.config.language and builder.config.language != 'ja':
             self.elements['fncychap'] = '\\usepackage[Bjornstrup]{fncychap}'
-        #self.elements['usepackages'] += "\n" + '\usepackage{tabu}'
+        self.elements['usepackages'] += "\n" + '\usepackage[table]{xcolor}'
+        self.elements['usepackages'] += "\n" + '\usepackage{tcolorbox}'
 
     def depart_table(self, node):
         if self.table.rowcount > 30:
             self.table.longtable = True
         self.body = self._body
         if not self.table.longtable:
-            self.body.append('\\begin{table}[h]\n')
+            self.body.append('\\begin{table}[ht]\n')
             self.body.append('\\centering\n')
         if not self.table.longtable and self.table.caption is not None:
             self.body.append(u'\n\n\\begin{threeparttable}\n'
@@ -79,13 +80,13 @@ class LaTeXRTDTranslator(BaseTranslator):
             self.body.append('\\endfirsthead\n\n')
             self.body.append(r'\hline \multicolumn{%s}{|r|}{{\textsf{%s}}} \\ \hline'
                              % (self.table.colcount,
-                                _('continued from previous page')))
+                             _('continued from previous page')))
             self.body.append('\n\\hline\n')
             self.body.extend(self.tableheaders)
             self.body.append('\\endhead\n\n')
             self.body.append(r'\hline \multicolumn{%s}{|r|}{{\textsf{%s}}} \\ \hline'
                              % (self.table.colcount,
-                                _('Continued on next page')))
+                             _('Continued on next page')))
             self.body.append('\n\\endfoot\n\n')
             self.body.append('\\endlastfoot\n\n')
         else:
@@ -153,5 +154,15 @@ class LaTeXRTDTranslator(BaseTranslator):
                 context += '}{l|}{}'
                 self.table.col += extracols
         self.context.append(context)
+
+    def visit_topic(self, node):
+        self.body.append('\\begin{tcolorbox}\n'
+                         '\\begin{minipage}{0.95\\linewidth}\n')
+
+    def depart_topic(self, node):
+        self.body.append('\\end{minipage}\n'
+                         '\\end{tcolorbox}\n')
+    visit_sidebar = visit_topic
+    depart_sidebar = depart_topic
 
 sphinx.writers.latex.LaTeXTranslator = LaTeXRTDTranslator

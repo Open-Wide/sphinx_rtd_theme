@@ -110,15 +110,17 @@
 
 % Use this to set the font family for headers and other decor:
 \newcommand{\py@HeaderFamily}{\sffamily\bfseries}
+\newcommand{\py@FooterFamily}{\sffamily\bfseries}
+\newcommand{\py@TitleFamily}{\sffamily\bfseries}
 
 % Redefine the 'normal' header/footer style when using "fancyhdr" package:
 \@ifundefined{fancyhf}{}{
   % Use \pagestyle{normal} as the primary pagestyle for text.
   \fancypagestyle{normal}{
     \fancyhf{}
-    \fancyfoot[LE,RO]{{\py@HeaderFamily\thepage}}
-    \fancyfoot[LO]{{\py@HeaderFamily\nouppercase{\rightmark}}}
-    \fancyfoot[RE]{{\py@HeaderFamily\nouppercase{\leftmark}}}
+    \fancyfoot[LE,RO]{{\py@FooterFamily\thepage}}
+    \fancyfoot[LO]{{\py@FooterFamily\nouppercase{\rightmark}}}
+    \fancyfoot[RE]{{\py@FooterFamily\nouppercase{\leftmark}}}
     \fancyhead[LE,RO]{{\py@HeaderFamily \@title, \py@release}}
     \renewcommand{\headrulewidth}{0.4pt}
     \renewcommand{\footrulewidth}{0.4pt}

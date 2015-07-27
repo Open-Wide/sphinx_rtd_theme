@@ -190,15 +190,6 @@
     {\normalfont\normalsize\bfseries}%
 }%
 
-% Background on the top of the page
-%\newcommand\chapterBox{%
-%  \put(0,0){%
-%    \parbox[b][\paperheight]{\paperwidth}{%
-%      \color{SectionColor}\rule{\paperwidth}{11em} %*
-%      \vfill
-%    }
-%}}
-
 %%%%%
 % TOC
 %%%%%
@@ -209,4 +200,12 @@
 \def\l@subsubsubsection{\@dottedtocline{4}{7em}{4em}}
 \def\l@paragraph{\@dottedtocline{5}{10em}{5em}}
 \def\l@subparagraph{\@dottedtocline{6}{14em}{6em}}
+
+%%%%%%%%%%%%
+% First page
+%%%%%%%%%%%%
+
+\newcommand{\py@FrontPageTitleFamily}{\py@TitleFamily\em\Huge\scshape\color{owblue}\scshape}
+\newcommand{\py@FrontPageReleaseFamily}{\py@TitleFamily\em\Large\scshape\color{owblue}\scshape}
+\newcommand{\py@FrontPageFamily}{\py@TitleFamily\color{owgray}}
 

@@ -5,6 +5,9 @@ from docutils.io import FileOutput
 import os
 import sphinx.builders.latex
 from sphinx.locale import _
+import locale
+locale.setlocale(locale.LC_TIME,'')
+import time
 from sphinx.util.console import bold
 from sphinx.util.osutil import copyfile
 from sphinx.util.smartypants import educate_quotes_latex
@@ -19,13 +22,25 @@ sphinx.writers.latex.HEADER = sphinx.writers.latex.HEADER.replace('%(makeindex)s
 BaseTranslator = sphinx.writers.latex.LaTeXTranslator
 
 class LaTeXRTDTranslator(BaseTranslator):
-
+    
     def __init__(self, document, builder):
         BaseTranslator.__init__(self, document, builder)
         if builder.config.language and builder.config.language != 'ja':
             self.elements['fncychap'] = '\\usepackage[Bjornstrup]{fncychap}'
         self.elements['usepackages'] += "\n" + '\usepackage[table]{xcolor}'
         self.elements['usepackages'] += "\n" + '\usepackage{tcolorbox}'
+        
+        if builder.config.today:
+            self.elements['date'] = builder.config.today
+        else:
+            self.elements['date'] = time.strftime(builder.config.today_fmt or _('%B %d, %Y'))
+
+    def format_docclass(self, docclass):
+        """ prepends prefix to sphinx document classes
+        """
+        if docclass in self.docclasses:
+            docclass = 'rtdsphinx' + docclass
+        return docclass
 
     def depart_table(self, node):
         if self.table.rowcount > 30:

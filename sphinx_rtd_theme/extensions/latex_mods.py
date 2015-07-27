@@ -24,11 +24,7 @@ class LaTeXRTDTranslator(BaseTranslator):
         BaseTranslator.__init__(self, document, builder)
         if builder.config.language and builder.config.language != 'ja':
             self.elements['fncychap'] = '\\usepackage[Bjornstrup]{fncychap}'
-#        self.elements['usepackages'] += "\n" + '\usepackage{tcolorbox}'
-#        self.elements['usepackages'] += "\n" + '\usepackage{tabularx}'
-#        self.elements['usepackages'] += "\n" + '\usepackage{array}'
-#        self.elements['usepackages'] += "\n" + '\usepackage{colortbl}'
-#        self.elements['usepackages'] += "\n" + '\\tcbuselibrary{skins}'
+        #self.elements['usepackages'] += "\n" + '\usepackage{tabu}'
 
     def depart_table(self, node):
         if self.table.rowcount > 30:
@@ -81,9 +77,9 @@ class LaTeXRTDTranslator(BaseTranslator):
             self.body.append('\\hline\n')
             self.body.extend(self.tableheaders)
             self.body.append('\\endfirsthead\n\n')
-            self.body.append('\\multicolumn{%s}{c}%%\n' % self.table.colcount)
-            self.body.append(r'{{\textsf{\tablename\ \thetable{} -- %s}}} \\'
-                             % _('continued from previous page'))
+            self.body.append(r'\hline \multicolumn{%s}{|r|}{{\textsf{%s}}} \\ \hline'
+                             % (self.table.colcount,
+                                _('continued from previous page')))
             self.body.append('\n\\hline\n')
             self.body.extend(self.tableheaders)
             self.body.append('\\endhead\n\n')
@@ -108,23 +104,6 @@ class LaTeXRTDTranslator(BaseTranslator):
         BaseTranslator.visit_row(self, node)
         if isinstance(node.parent, nodes.thead):
             self.body.append('\\headcol ')
-
-#    def depart_row(self, node):
-#        self.body.append('\\\\\n')
-#        if any(self.remember_multirow.values()):
-#            linestart = 1
-#            for col in range(1, self.table.col + 1):
-#                if self.remember_multirow.get(col):
-#                    if linestart != col:
-#                        linerange = str(linestart) + '-' + str(col - 1)
-#                        self.body.append('\\cline{' + linerange + '}')
-#                    linestart = col + 1
-#                    if self.remember_multirowcol.get(col, 0):
-#                        linestart += self.remember_multirowcol[col]
-#            if linestart <= col:
-#                linerange = str(linestart) + '-' + str(col)
-#                self.body.append('\\cline{' + linerange + '}')
-#        self.table.rowcount += 1
 
     def visit_entry(self, node):
         if self.table.col == 0:

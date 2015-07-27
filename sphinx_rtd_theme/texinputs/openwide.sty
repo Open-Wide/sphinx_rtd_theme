@@ -6,14 +6,17 @@
 
 \ProvidesPackage{openwide}[2015/07/17 LaTeX package (Open Wide)]
 
-\usepackage{xcolor}
+\usepackage[table]{xcolor}
 \usepackage{sectsty}
 \usepackage{tikz}
 \usepackage{titlesec}
 \usepackage{color}
+\usepackage{colortbl}
 \usepackage{eso-pic}
 \usepackage{blindtext}
 \usepackage{graphicx}
+\usepackage{array}
+\usepackage{booktabs}
 
 %%%%%%%
 % FONTS
@@ -30,34 +33,55 @@
 %%%%%%%%%%
 % http://latexcolor.com/
 
-\definecolor{owgrey}{HTML}{808080}
+\definecolor{owgray}{HTML}{808080}
 \definecolor{owblue}{HTML}{0C96C7}
 \definecolor{owbgblue}{HTML}{0C96C7}
-\definecolor{owdbblue}{HTML}{F5F5F5}
+\definecolor{owbggray}{HTML}{F5F5F5}
 \definecolor{owwhite}{HTML}{FFFFFF}
 \definecolor{ownormal}{HTML}{000000}
+\definecolor{owrowbgodd}{HTML}{F5F5F5}
+\definecolor{owrowbgeven}{HTML}{FFFFFF}
 
 \colorlet{TitleColor}{owblue}
 \colorlet{NormalColor}{ownormal}
 \colorlet{ChapterColor}{owwhite}
 \colorlet{SectionColor}{owblue}
-\colorlet{SubSectionColor}{owgrey}
-\colorlet{SubSubSectionColor}{owgrey}
+\colorlet{SubSectionColor}{owgray}
+\colorlet{SubSubSectionColor}{owgray}
 \colorlet{InnerLinkColor}{owblue}
 \colorlet{OuterLinkColor}{owblue}
 
-\colorlet{VerbatimColor}{owdbblue}
-\colorlet{VerbatimBorderColor}{owgrey}
+\colorlet{VerbatimColor}{owbggray}
+\colorlet{VerbatimBorderColor}{owgray}
 
-% Redefine title positionning
-%\titlespacing{\chapter}{0pt}{-4em}{5.0em}
+%%%%%%%%%
+% TABLEAU
+%%%%%%%%%
 
-% Redefine title colors
-%\titleformat{\chapter}[display]
-%            {\LARGE\sffamily\bfseries\raggedright\color{ChapterColor}}
-%            {\leftskip2cm\Large\textmd{\color{ChapterColor}\chaptertitlename~\thechapter}}
-%            {0cm}
-%            {\AddToShipoutPicture*{\chapterBox}\leftskip2cm}
+% alternate rowcolors for all tables
+\let\oldtabular\tabular
+\let\endoldtabular\endtabular
+\renewenvironment{tabular}{\rowcolors{2}{owwhite}{owbggray}\oldtabular}{\endoldtabular}
+
+% alternate rowcolors for all long-tables
+\let\oldlongtable\longtable
+\let\endoldlongtable\endlongtable
+\renewenvironment{longtable}{\rowcolors{2}{owwhite}{owbggray}\oldlongtable} {
+\endoldlongtable}
+
+\colorlet{tableheadcolor}{owbgblue} % Table header colour = Blue
+\newcommand{\headcol}{\rowcolor{tableheadcolor}} %
+    % Command \topline consists of a (slightly modified) \toprule followed by a \heavyrule rule of colour tableheadcolor (hence, 2 separate rules)
+
+% Array rules
+\arrayrulecolor[HTML]{808080}
+\setlength{\arrayrulewidth}{1.5pt}
+
+% Centring longtable
+\setlength{\LTleft}{-20cm plus -1fill}
+\setlength{\LTright}{\LTleft}
+
+\renewcommand{\arraystretch}{1.5}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
 % NUMÉROTATION DES TITRES
@@ -77,16 +101,15 @@
         \vbox{%
             \hsize=6em%
             \begin{tabular}{c}
-                \scshape \strut \color{owbgblue} \@chapapp{} \\
-                \colorbox{owbgblue}{\vbox{\hbox{\vbox to 1mm{}}\hbox{\color{white} \LARGE \bfseries \hspace{1mm}\thechapter\hspace{1mm}}\hbox{\vbox to 6em{}}}}%
+                \rowcolor{owwhite} \scshape \strut \color{owbgblue} \@chapapp{} \\
+                \rowcolor{owwhite} \colorbox{owbgblue}{\vbox{\hbox{\vbox to 1mm{}}\hbox{\color{white} \LARGE \bfseries \hspace{1mm}\thechapter\hspace{1mm}}\hbox{\vbox to 6em{}}}}%
             \end{tabular}%
             }%
         \vbox{%
             \advance\hsize by -6em
             \par
             \vskip 1em%
-            %\hspace{0em}%
-            \parbox{50em}{%
+            \parbox{35em}{%
                 \color{owbgblue} \Huge \scshape #1}%
             }%
         }%
@@ -107,7 +130,7 @@
             \par
             \vskip 1em%
             %\hspace{0em}%
-            \parbox{50em}{%
+            \parbox{35em}{%
                 \color{owbgblue} \Huge \scshape #1}%
             }%
         }%

@@ -3837,17 +3837,8 @@ code.code-large, .rst-content tt.code-large {
   background: #fff;
   margin: 1px 0 24px 0;
 }
-
-.codeblock, pre.literal-block, .rst-content .literal-block, .rst-content pre.literal-block {
-  padding: 12px;
-  font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
-  font-size: 12px;
-  line-height: 1.5;
-}
-
 .codeblock div[class^='highlight'], pre.literal-block div[class^='highlight'], .rst-content .literal-block div[class^='highlight'], div[class^='highlight'] div[class^='highlight'] {
   border: none;
-  padding: 12px 12px;
   background: none;
   margin: 0;
 }
@@ -4786,6 +4777,12 @@ footer p {
   margin-left: 24px;
   line-height: 24px;
   margin-bottom: 24px;
+}
+.rst-content .literal-block, .rst-content pre.literal-block {
+  padding: 12px;
+  font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
+  font-size: 12px;
+  line-height: 1.5;
 }
 .rst-content .note .last, .rst-content .attention .last, .rst-content .caution .last, .rst-content .danger .last, .rst-content .error .last, .rst-content .hint .last, .rst-content .important .last, .rst-content .tip .last, .rst-content .warning .last, .rst-content .seealso .last, .rst-content .admonition-todo .last, .rst-content .admonition .last {
   margin-bottom: 0;

@@ -16,7 +16,7 @@ import sphinx.writers.latex
 from sphinx.writers.latex import LaTeXWriter
 
 # remove usepackage for sphinx here, we add it later in the preamble in conf.py
-sphinx.writers.latex.HEADER = sphinx.writers.latex.HEADER.replace('\usepackage{sphinx}', '\usepackage{openwide_sphinx}')
+sphinx.writers.latex.HEADER = sphinx.writers.latex.HEADER.replace('\usepackage{sphinx}', '\usepackage{rtdsphinx}')
 sphinx.writers.latex.HEADER = sphinx.writers.latex.HEADER.replace('%(makeindex)s', '\pagestyle{fancy}\n%(makeindex)s')
 #
 BaseTranslator = sphinx.writers.latex.LaTeXTranslator
@@ -27,8 +27,6 @@ class LaTeXRTDTranslator(BaseTranslator):
         BaseTranslator.__init__(self, document, builder)
         if builder.config.language and builder.config.language != 'ja':
             self.elements['fncychap'] = '\\usepackage[Bjornstrup]{fncychap}'
-        self.elements['usepackages'] += "\n" + '\usepackage[table]{xcolor}'
-        self.elements['usepackages'] += "\n" + '\usepackage{tcolorbox}'
         
         if builder.config.today:
             self.elements['date'] = builder.config.today

@@ -23,8 +23,8 @@ def get_latex_theme_files():
     """Return list of HTML theme paths."""
     cur_dir = path.abspath(path.dirname(path.dirname(__file__)))
     return [
-        path.join(cur_dir, 'sphinx_rtd_theme', 'texinputs', 'openwide.sty'),
-        path.join(cur_dir, 'sphinx_rtd_theme', 'texinputs', 'openwide_sphinx.sty'),
+#        path.join(cur_dir, 'sphinx_rtd_theme', 'texinputs', 'openwide.sty'),
+        path.join(cur_dir, 'sphinx_rtd_theme', 'texinputs', 'rtdsphinx.sty'),
         path.join(cur_dir, 'sphinx_rtd_theme', 'texinputs', 'rtdsphinxhowto.cls'),
         path.join(cur_dir, 'sphinx_rtd_theme', 'texinputs', 'rtdsphinxmanual.cls')
     ]

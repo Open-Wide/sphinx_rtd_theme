@@ -5023,6 +5023,9 @@ footer p {
 .rst-content tt.download span:first-child:before, .rst-content code.download span:first-child:before {
   margin-right: 4px;
 }
+.rst-content .wy-table-responsive table {
+  margin: auto;
+}
 .rst-content .wy-table-responsive table td {
   white-space: normal;
 }

@@ -4880,6 +4880,10 @@ footer p {
   vertical-align: super;
   font-size: 90%;
 }
+.rst-content .wy-table thead, .rst-content table.docutils thead, .rst-content table.field-list thead {
+  background-color: #0c96c7;
+  color: #FFF;
+}
 .rst-content table.docutils.citation, .rst-content table.docutils.footnote {
   background: none;
   border: none;

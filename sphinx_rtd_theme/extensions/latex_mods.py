@@ -45,7 +45,7 @@ class LaTeXRTDTranslator(BaseTranslator):
             self.table.longtable = True
         self.body = self._body
         if not self.table.longtable:
-            self.body.append('\\begin{table}[ht]\n')
+            self.body.append('\\begin{table}[H]\n')
             self.body.append('\\centering\n')
         if not self.table.longtable and self.table.caption is not None:
             self.body.append(u'\n\n\\begin{threeparttable}\n'

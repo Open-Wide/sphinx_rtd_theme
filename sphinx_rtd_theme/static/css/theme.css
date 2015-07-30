@@ -5239,6 +5239,15 @@ code, .rst-content tt, .rst-content code, .rst-content tt, .rst-content tt, .rst
   line-height: 24px;
 }
 
+.rst-content .wy-table-responsive table.footnote {
+  margin: 0;
+  width: 100%;
+  border: 1px dotted #777;
+  border-width: 1px 0;
+  font-size: 80%;
+  padding: 10px;
+}
+
 span[id*='MathJax-Span'] {
   color: #404040;
 }

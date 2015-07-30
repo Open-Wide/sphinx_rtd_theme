@@ -5194,10 +5194,12 @@ h2, .rst-content p.caption, .rst-content h2, .rst-content p.caption {
 
 h3, .rst-content h3 {
   font-family: "CHEVINLight", "Roboto Slab", "Georgia", Arial, sans-serif;
+  color: #808080;
 }
 
 h4, .rst-content h4 {
   font-family: "CHEVINLight", "Roboto Slab", "Georgia", Arial, sans-serif;
+  color: #808080;
 }
 
 .wy-breadcrumbs-aside a {
@@ -5227,6 +5229,14 @@ code, .rst-content tt, .rst-content code, .rst-content tt, .rst-content tt, .rst
 
 .fa-arrow-circle-left::before, .icon-circle-arrow-left::before, .fa-arrow-circle-right::before, .icon-circle-arrow-right::before {
   color: #0c96c7;
+}
+
+.rst-content dl dd {
+  border-left: 2px solid #0c96c7;
+  font-size: 90%;
+  margin: 10px 0 25px 24px;
+  padding-left: 10px;
+  line-height: 24px;
 }
 
 span[id*='MathJax-Span'] {

@@ -390,8 +390,32 @@ code, .rst-content tt, .rst-content code
     font-size: 80%
     padding: 10px
 
+  .section ul li
+    &, & ul li, & ul li ul li
+      list-style: none
+
+      &:before
+        @extend .fa
+        @extend .fa-chevron-right
+        color: $title_color
+        font-size: 80%
+        float: left
+        padding-top: 7px
+        margin-right: 5px
+
+    & ul li:before
+      font-size: 60%
+      padding-top: 9px
+
+    & ul li ul li:before
+      font-size: 40%
+      padding-top: 11px
+
   .admonition-a-faire
     @extend .admonition-todo
+
+    ul li:before
+      color: #e0853a
 
     .admonition-title:before
       @extend .fa-check

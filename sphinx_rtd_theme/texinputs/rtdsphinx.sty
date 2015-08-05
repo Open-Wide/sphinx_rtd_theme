@@ -34,6 +34,7 @@
 \RequirePackage{alltt}
 % Display "real" single quotes in literal blocks.
 \RequirePackage{upquote}
+\usepackage{helvet}
 
 % For graphicx, check if we are compiling under latex or pdflatex.
 \ifx\pdftexversion\undefined
@@ -77,9 +78,11 @@
 \colorlet{TitleColor}{RTDMainColor}
 
 % Fonts
-\renewcommand*\rmdefault{lmr}
-\renewcommand*\sffamily{lmss}
-\renewcommand*\ttfamily{lmtt}
+\renewcommand*\rmdefault{ari}
+\renewcommand*\sffamily{aris}
+\renewcommand*\ttfamily{arit}
+
+\renewcommand{\familydefault}{\sfdefault}
 
 \setlength{\headheight}{15pt}
 
@@ -141,9 +144,9 @@
 \pagestyle{empty}               % start this way
 
 % Use this to set the font family for headers and other decor:
-\newcommand{\py@HeaderFamily}{\sffamily\bfseries}
-\newcommand{\py@FooterFamily}{\sffamily\bfseries}
-\newcommand{\py@TitleFamily}{\sffamily\bfseries}
+\newcommand{\py@HeaderFamily}{\sffamily\mdseries}
+\newcommand{\py@FooterFamily}{\sffamily\mdseries}
+\newcommand{\py@TitleFamily}{\sffamily\mdseries}
 
 % Redefine the 'normal' header/footer style when using "fancyhdr" package:
 \@ifundefined{fancyhf}{}{
@@ -574,12 +577,12 @@
 % alternate rowcolors for all tables
 \let\oldtabular\tabular
 \let\endoldtabular\endtabular
-\renewenvironment{tabular}{\rowcolors{2}{RTDWhiteColor}{RTDSecondaryBackgroundColor}\oldtabular}{\endoldtabular}
+\renewenvironment{tabular}{\rowcolors{2}{RTDSecondaryBackgroundColor}{RTDWhiteColor}\oldtabular}{\endoldtabular}
 
 % alternate rowcolors for all long-tables
 \let\oldlongtable\longtable
 \let\endoldlongtable\endlongtable
-\renewenvironment{longtable}{\rowcolors{2}{RTDWhiteColor}{RTDSecondaryBackgroundColor}\oldlongtable} {
+\renewenvironment{longtable}{\rowcolors{2}{RTDSecondaryBackgroundColor}{RTDWhiteColor}\oldlongtable} {
 \endoldlongtable}
 
 \colorlet{tableheadcolor}{RTDMainBackgroundColor} % Table header colour = Blue
@@ -657,7 +660,7 @@
 
 
 \colorlet{SectionColor}{RTDMainColor}
-\newcommand{\py@SectionFamily}{\py@TitleFamily\huge\color{SectionColor}}
+\newcommand{\py@SectionFamily}{\py@TitleFamily\huge\color{SectionColor}\scshape}
 
 \renewcommand{\section}{%
     \@startsection%
@@ -669,7 +672,7 @@
     {\py@SectionFamily}%  allure du titre
 }%
 
-\colorlet{SubSectionColor}{RTDSecondaryColor}
+\colorlet{SubSectionColor}{RTDMainColor}
 \newcommand{\py@SubSectionFamily}{\py@TitleFamily\LARGE\color{SubSectionColor}}
 
 \renewcommand{\subsection}{%

@@ -1,25 +1,17 @@
-# -*- coding: utf-8 -*-
-
-from docutils import nodes
-from docutils.frontend import OptionParser
-from docutils.io import FileOutput
-import os
-import sphinx.builders.latex
-from sphinx.locale import _
+## -*- coding: utf-8 -*-
+#
 import locale
 locale.setlocale(locale.LC_TIME,'')
 import time
-from sphinx.util.console import bold
-from sphinx.util.osutil import copyfile
-from sphinx.util.smartypants import educate_quotes_latex
-from sphinx.util.texescape import tex_escape_map
+from docutils import nodes
+from sphinx.locale import _
+import sphinx.builders.latex
 import sphinx.writers.latex
-from sphinx.writers.latex import LaTeXWriter
-
-# remove usepackage for sphinx here, we add it later in the preamble in conf.py
-sphinx.writers.latex.HEADER = sphinx.writers.latex.HEADER.replace('\usepackage{sphinx}', '\usepackage{rtdsphinx}')
-sphinx.writers.latex.HEADER = sphinx.writers.latex.HEADER.replace('%(makeindex)s', '\pagestyle{fancy}\n%(makeindex)s')
 #
+# remove usepackage for sphinx here, we add it later in the preamble in conf.py
+sphinx.writers.latex.HEADER = sphinx.writers.latex.HEADER.replace('\\usepackage{sphinx}', '\\usepackage{rtdsphinx}')
+sphinx.writers.latex.HEADER = sphinx.writers.latex.HEADER.replace('%(makeindex)s', '\pagestyle{fancy}\n%(makeindex)s')
+
 BaseTranslator = sphinx.writers.latex.LaTeXTranslator
 
 class LaTeXRTDTranslator(BaseTranslator):
@@ -32,7 +24,7 @@ class LaTeXRTDTranslator(BaseTranslator):
         if builder.config.today:
             self.elements['date'] = builder.config.today
         else:
-            self.elements['date'] = time.strftime(builder.config.today_fmt or _('%B %d, %Y'))
+            self.elements['date'] = time.strftime(builder.config.today_fmt or _('%B %d, %Y')).decode('utf-8')
 
     def format_docclass(self, docclass):
         """ prepends prefix to sphinx document classes

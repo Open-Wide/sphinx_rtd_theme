@@ -18,8 +18,11 @@ class LaTeXRTDTranslator(BaseTranslator):
     
     def __init__(self, document, builder):
         BaseTranslator.__init__(self, document, builder)
-        if builder.config.language and builder.config.language != 'ja':
-            self.elements['fncychap'] = '\\usepackage[Bjornstrup]{fncychap}'
+        if builder.config.language:
+            if builder.config.language != 'ja':
+                self.elements['fncychap'] = '\\usepackage[Bjornstrup]{fncychap}'
+            if builder.config.language == 'fr':
+                self.elements['babel'] = '\\usepackage[cyr]{aeguill}\n\\usepackage[francais]{babel}'
         
         if builder.config.today:
             self.elements['date'] = builder.config.today

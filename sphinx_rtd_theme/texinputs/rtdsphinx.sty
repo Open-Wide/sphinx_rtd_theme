@@ -35,6 +35,7 @@
 % Display "real" single quotes in literal blocks.
 \RequirePackage{upquote}
 \usepackage{helvet}
+\usepackage{emptypage}
 
 % For graphicx, check if we are compiling under latex or pdflatex.
 \ifx\pdftexversion\undefined
@@ -54,6 +55,7 @@
 \usepackage{blindtext}
 \usepackage{array}
 \usepackage{booktabs}
+\usepackage[pages=some]{background}
 
 % Redefine these colors to your liking in the preamble.
 \definecolor{RTDMainColor}{HTML}{0C96C7}
@@ -78,9 +80,9 @@
 \colorlet{TitleColor}{RTDMainColor}
 
 % Fonts
-\renewcommand*\rmdefault{ari}
-\renewcommand*\sffamily{aris}
-\renewcommand*\ttfamily{arit}
+\renewcommand*\rmdefault{cmr}
+\renewcommand*\sffamily{cmrs}
+\renewcommand*\ttfamily{cmrt}
 
 \renewcommand{\familydefault}{\sfdefault}
 
@@ -739,6 +741,8 @@
 % First page
 %%%%%%%%%%%%
 
-\newcommand{\py@FrontPageTitleFamily}{\py@TitleFamily\em\Huge\scshape\color{RTDMainColor}\scshape}
-\newcommand{\py@FrontPageReleaseFamily}{\py@TitleFamily\em\Large\scshape\color{RTDMainColor}\scshape}
-\newcommand{\py@FrontPageFamily}{\py@TitleFamily\color{RTDSecondaryColor}}
+\newcommand{\py@FrontPageTitleFamily}{\py@TitleFamily\em\Huge\scshape\bfseries\color{RTDMainColor}}
+\newcommand{\py@FrontPageSubtitleFamily}{\py@TitleFamily\em\Huge\scshape\color{RTDWhiteColor}}
+\newcommand{\py@FrontPageReferenceFamily}{\py@TitleFamily\em\Large\scshape\color{RTDMainColor}}
+\newcommand{\py@FrontPageReleaseFamily}{\py@TitleFamily\em\large\scshape\color{RTDSecondaryColor}}
+\newcommand{\py@FrontPageFamily}{\py@TitleFamily\normalsize\color{RTDSecondaryColor}}

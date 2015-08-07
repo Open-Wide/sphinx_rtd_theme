@@ -1,20 +1,32 @@
 ## -*- coding: utf-8 -*-
 #
+from os import path
 import locale
 locale.setlocale(locale.LC_TIME,'')
 import time
 from docutils import nodes
 from sphinx.locale import _
+from sphinx.util.osutil import copyfile
 import sphinx.builders.latex
 import sphinx.writers.latex
+import sphinx.config
 #
 # remove usepackage for sphinx here, we add it later in the preamble in conf.py
 sphinx.writers.latex.HEADER = sphinx.writers.latex.HEADER.replace('\\usepackage{sphinx}', '\\usepackage{rtdsphinx}')
 sphinx.writers.latex.HEADER = sphinx.writers.latex.HEADER.replace('%(makeindex)s', '\pagestyle{fancy}\n%(makeindex)s')
+sphinx.writers.latex.HEADER = sphinx.writers.latex.HEADER.replace('%(makeindex)s', '\\newcommand{\\rtdbackgroundimage}{%(backgroundimage)s}\n%(makeindex)s')
+sphinx.writers.latex.HEADER = sphinx.writers.latex.HEADER.replace('%(makeindex)s', '\\newcommand{\\rtdsubtitle}{%(subtitle)s}\n%(makeindex)s')
+sphinx.writers.latex.HEADER = sphinx.writers.latex.HEADER.replace('%(makeindex)s', '\\newcommand{\\rtdreference}{%(reference)s}\n%(makeindex)s')
+sphinx.writers.latex.HEADER = sphinx.writers.latex.HEADER.replace('%(makeindex)s', '\\newcommand{\\rtdfooterimage}{%(footerimage)s}\n%(makeindex)s')
 
 BaseTranslator = sphinx.writers.latex.LaTeXTranslator
 
 class LaTeXRTDTranslator(BaseTranslator):
+    
+    default_elements = BaseTranslator.default_elements
+    default_elements['backgroundimage'] = ''
+    default_elements['subtitle'] = ''
+    default_elements['reference'] = ''
     
     def __init__(self, document, builder):
         BaseTranslator.__init__(self, document, builder)
@@ -29,6 +41,22 @@ class LaTeXRTDTranslator(BaseTranslator):
         else:
             self.elements['date'] = time.strftime(builder.config.today_fmt or _('%B %d, %Y')).decode('utf-8')
 
+        if builder.config.latex_background_image:
+            self.elements['backgroundimage'] = u'\includegraphics[width=19cm]{%s}' % path.basename(builder.config.latex_background_image)
+
+        if builder.config.latex_footer_image:
+            self.elements['footerimage'] = u'\includegraphics[width=7cm]{%s}' % path.basename(builder.config.latex_footer_image)
+            
+        if builder.config.latex_logo:
+            self.elements['logo'] = '\\includegraphics[height=3cm]{%s}\\par' % \
+                                    path.basename(builder.config.latex_logo)
+
+        if builder.config.subtitle:
+            self.elements['subtitle'] = path.basename(builder.config.subtitle)
+
+        if builder.config.reference:
+            self.elements['reference'] = u'{%s}' % builder.config.reference
+                                    
     def format_docclass(self, docclass):
         """ prepends prefix to sphinx document classes
         """
@@ -175,3 +203,25 @@ class LaTeXRTDTranslator(BaseTranslator):
     depart_sidebar = depart_topic
 
 sphinx.writers.latex.LaTeXTranslator = LaTeXRTDTranslator
+
+BaseBuilder= sphinx.builders.latex.LaTeXBuilder
+
+class LaTeXRTDBuilder(BaseBuilder):
+    def finish(self):
+        BaseBuilder.finish(self)
+
+        # the backbround is handled differently
+        if self.config.latex_background_image:
+            backgroundbase = path.basename(self.config.latex_background_image)
+            copyfile(path.join(self.confdir, self.config.latex_background_image),
+                     path.join(self.outdir, backgroundbase))
+        self.info('done')
+
+        # the footer is handled differently
+        if self.config.latex_footer_image:
+            footerbase = path.basename(self.config.latex_footer_image)
+            copyfile(path.join(self.confdir, self.config.latex_footer_image),
+                     path.join(self.outdir, footerbase))
+        self.info('done')
+
+sphinx.builders.latex.LaTeXBuilder = LaTeXRTDBuilder

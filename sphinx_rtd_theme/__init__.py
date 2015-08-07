@@ -37,6 +37,12 @@ def setup(app):
     app.config.html_logo = path.join(get_html_theme_path(), 'sphinx_rtd_theme', "static", "images", "logo_html.png")
     app.config.latex_logo = path.join(get_html_theme_path(), 'sphinx_rtd_theme', "static", "images", "logo_latex.png")
     app.config.html_favicon = path.join(get_html_theme_path(), 'sphinx_rtd_theme', "static", "images", "favicon.png")
-    
     app.config.latex_additional_files = get_latex_theme_files()
+    
+    latex_background_image = path.join(get_html_theme_path(), 'sphinx_rtd_theme', "static", "images", "latex_background_image.png")
+    app.add_config_value('latex_background_image', latex_background_image, False)
+    latex_footer_image = path.join(get_html_theme_path(), 'sphinx_rtd_theme', "static", "images", "latex_address.png")
+    app.add_config_value('latex_footer_image', latex_footer_image, False)
+    app.add_config_value('subtitle', False, False)
+    app.add_config_value('reference', False, False)
     

@@ -34,6 +34,18 @@
 % ``Bjarne'' style a bit better.
 \renewcommand{\maketitle}{%
     \begin{titlepage}%
+        \BgThispage
+        \backgroundsetup{
+            scale=1,
+            color=white,
+            opacity=1,
+            angle=0,
+            placement=top,
+            vshift=-1cm,
+            contents={%
+                \rtdbackgroundimage
+            }%
+        }
         \let\footnotesize\small
         \let\footnoterule\relax
         \ifsphinxpdfoutput
@@ -50,29 +62,28 @@
             \endgroup
         \fi
         \begin{flushright}%
-            \sphinxlogo%
-                \begin{flushright}%
-                    \vspace*{3cm}
-                    {\py@FrontPageTitleFamily \@title \par}%
-                    \vspace*{1cm}
-                    {\py@FrontPageReleaseFamily \py@release\releaseinfo \par}
-                    \vspace*{3cm}
-                \end{flushright}%\par
             \vfill{%
-                \py@FrontPageFamily
-                \begin{tabular}[t]{c}
-                    \@author
-                \end{tabular}
+                \py@FrontPageSubtitleFamily
+                \rtdsubtitle
                 \par
             }%
-            \vfill\vfill{%
-                \py@FrontPageFamily
-                \@date \par
-                \vfill
-                \py@authoraddress \par
-            }%
         \end{flushright}%\par
-        \@thanks
+        \begin{flushleft}%
+            \vspace*{6cm}
+            \scalebox{1.5}{\py@FrontPageTitleFamily \@title}\par%
+            {\py@FrontPageReferenceFamily{\rtdreference}} %
+            {\py@FrontPageReleaseFamily \py@release\releaseinfo  |  }%
+            {\py@FrontPageFamily \@date \par}
+            \vspace*{3cm}
+        \end{flushleft}%\par
+        \begin{center}%
+            \sphinxlogo%
+        \end{center}%\par
+        \begin{figure}[b]
+            \begin{flushright}
+                {\rtdfooterimage}
+            \end{flushright}
+        \end{figure}
     \end{titlepage}%
     \cleardoublepage%
     \setcounter{footnote}{0}%

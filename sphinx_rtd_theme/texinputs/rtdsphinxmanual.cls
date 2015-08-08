@@ -6,7 +6,7 @@
 \ProvidesClass{rtdsphinxmanual}[2009/06/02 Document class (Sphinx manual)]
 
 % chapters starting at odd pages (overridden by 'openany' document option)
-\PassOptionsToClass{openright}{\sphinxdocclass}
+\PassOptionsToClass{openany}{\sphinxdocclass}
 
 % 'oneside' option overriding the 'twoside' default
 \newif\if@oneside
@@ -85,7 +85,7 @@
             \end{flushright}
         \end{figure}
     \end{titlepage}%
-    \cleardoublepage%
+    \clearpage%
     \setcounter{footnote}{0}%
     \let\thanks\relax\let\maketitle\relax
 }

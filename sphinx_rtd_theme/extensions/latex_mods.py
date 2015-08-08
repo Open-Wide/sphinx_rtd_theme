@@ -7,6 +7,7 @@ import time
 from docutils import nodes
 from sphinx.locale import _
 from sphinx.util.osutil import copyfile
+from sphinx import addnodes
 import sphinx.builders.latex
 import sphinx.writers.latex
 import sphinx.config
@@ -15,8 +16,10 @@ import sphinx.config
 sphinx.writers.latex.HEADER = sphinx.writers.latex.HEADER.replace('\\usepackage{sphinx}', '\\usepackage{rtdsphinx}')
 sphinx.writers.latex.HEADER = sphinx.writers.latex.HEADER.replace('%(makeindex)s', '\pagestyle{fancy}\n%(makeindex)s')
 sphinx.writers.latex.HEADER = sphinx.writers.latex.HEADER.replace('%(makeindex)s', '\\newcommand{\\rtdbackgroundimage}{%(backgroundimage)s}\n%(makeindex)s')
+sphinx.writers.latex.HEADER = sphinx.writers.latex.HEADER.replace('%(makeindex)s', '\\newcommand{\\rtdheaderbackgroundimage}{%(headerbackgroundimage)s}\n%(makeindex)s')
 sphinx.writers.latex.HEADER = sphinx.writers.latex.HEADER.replace('%(makeindex)s', '\\newcommand{\\rtdsubtitle}{%(subtitle)s}\n%(makeindex)s')
 sphinx.writers.latex.HEADER = sphinx.writers.latex.HEADER.replace('%(makeindex)s', '\\newcommand{\\rtdreference}{%(reference)s}\n%(makeindex)s')
+sphinx.writers.latex.HEADER = sphinx.writers.latex.HEADER.replace('%(makeindex)s', '\\newcommand{\\rtdcopyright}{%(copyright)s}\n%(makeindex)s')
 sphinx.writers.latex.HEADER = sphinx.writers.latex.HEADER.replace('%(makeindex)s', '\\newcommand{\\rtdfooterimage}{%(footerimage)s}\n%(makeindex)s')
 
 BaseTranslator = sphinx.writers.latex.LaTeXTranslator
@@ -24,9 +27,14 @@ BaseTranslator = sphinx.writers.latex.LaTeXTranslator
 class LaTeXRTDTranslator(BaseTranslator):
     
     default_elements = BaseTranslator.default_elements
+    
+#    default_elements['maketitle'] = '\pagestyle{firstpage}\n\\maketitle\n\pagestyle{normal}'
+    default_elements['maketitle'] = '\\maketitle'
     default_elements['backgroundimage'] = ''
+    default_elements['headerbackgroundimage'] = ''
     default_elements['subtitle'] = ''
     default_elements['reference'] = ''
+    default_elements['copyright'] = ''
     
     def __init__(self, document, builder):
         BaseTranslator.__init__(self, document, builder)
@@ -44,6 +52,9 @@ class LaTeXRTDTranslator(BaseTranslator):
         if builder.config.latex_background_image:
             self.elements['backgroundimage'] = u'\includegraphics[width=19cm]{%s}' % path.basename(builder.config.latex_background_image)
 
+        if builder.config.latex_header_background_image:
+            self.elements['headerbackgroundimage'] = u'\includegraphics[width=19cm]{%s}' % path.basename(builder.config.latex_header_background_image)
+
         if builder.config.latex_footer_image:
             self.elements['footerimage'] = u'\includegraphics[width=7cm]{%s}' % path.basename(builder.config.latex_footer_image)
             
@@ -56,6 +67,9 @@ class LaTeXRTDTranslator(BaseTranslator):
 
         if builder.config.reference:
             self.elements['reference'] = u'{%s}' % builder.config.reference
+
+        if builder.config.copyright:
+            self.elements['copyright'] = u'{%s}' % builder.config.copyright
                                     
     def format_docclass(self, docclass):
         """ prepends prefix to sphinx document classes
@@ -222,6 +236,13 @@ class LaTeXRTDBuilder(BaseBuilder):
             footerbase = path.basename(self.config.latex_footer_image)
             copyfile(path.join(self.confdir, self.config.latex_footer_image),
                      path.join(self.outdir, footerbase))
+        self.info('done')
+
+        # the header is handled differently
+        if self.config.latex_footer_image:
+            headerbase = path.basename(self.config.latex_header_background_image)
+            copyfile(path.join(self.confdir, self.config.latex_header_background_image),
+                     path.join(self.outdir, headerbase))
         self.info('done')
 
 sphinx.builders.latex.LaTeXBuilder = LaTeXRTDBuilder

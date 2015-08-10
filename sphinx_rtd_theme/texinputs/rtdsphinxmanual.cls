@@ -111,10 +111,11 @@
 %
 \let\py@OldTableofcontents=\tableofcontents
 \renewcommand{\tableofcontents}{%
+  \pagestyle{toc}%
+  \addtocontents{toc}{\protect\thispagestyle{toc}}
   \pagenumbering{roman}%
   \setcounter{page}{1}%
   \pagebreak%
-  \pagestyle{plain}%
   {%
     \parskip = 0mm%
     \py@OldTableofcontents%
@@ -124,7 +125,7 @@
         \pagebreak\hspace{0pt}%
       \fi%
     \fi%
-    \cleardoublepage%
+    \clearpage%
   }%
   \pagenumbering{arabic}%
   \@ifundefined{fancyhf}{}{\pagestyle{normal}}%
@@ -142,7 +143,7 @@
 % For a report document class this environment is a chapter.
 \let\py@OldThebibliography=\thebibliography
 \renewcommand{\thebibliography}[1]{
-  \cleardoublepage
+  \clearpage
   \phantomsection
   \py@OldThebibliography{1}
   \addcontentsline{toc}{chapter}{\bibname}
@@ -154,7 +155,7 @@
 \@ifclassloaded{memoir}{}{
   \let\py@OldTheindex=\theindex
   \renewcommand{\theindex}{
-    \cleardoublepage
+    \clearpage
     \phantomsection
     \py@OldTheindex
     \addcontentsline{toc}{chapter}{\indexname}

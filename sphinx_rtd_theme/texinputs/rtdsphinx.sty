@@ -8,8 +8,7 @@
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesPackage{rtdsphinx}[2010/01/15 LaTeX package (Sphinx markup)]
 
-\@ifclassloaded{memoir}{}{\RequirePackage{fancyhdr}}
-
+\RequirePackage{fancyhdr}
 \RequirePackage{textcomp}
 \RequirePackage{fancybox}
 \RequirePackage{titlesec}
@@ -188,6 +187,16 @@
     \fancypagestyle{plain}{
         \fancyhf{}
         \fancyfoot[LE,RO]{{\py@FooterFamily\thepage\ / \pageref*{LastPage}}}
+        \fancyfoot[LO,RE]{{\py@FooterFamily\nouppercase\tiny{\rtdcopyright}}}
+        \fancyhead[LO]{{\py@HeaderFamily\nouppercase{\scalebox{1.5}{\@title} \\}}}
+        \fancyhead[RE]{{\py@HeaderFamily\nouppercase{\scalebox{1.5}{\@title} \\}}}
+        \fancyhead[LE,RO]{{\py@HeaderFamily \rtdreference \\ \py@release}}
+        \renewcommand{\headrulewidth}{0pt}
+        \renewcommand{\footrulewidth}{0.4pt}
+    }
+    \fancypagestyle{toc}{
+        \fancyhf{}
+        \fancyfoot[LE,RO]{{\py@FooterFamily\thepage}}
         \fancyfoot[LO,RE]{{\py@FooterFamily\nouppercase\tiny{\rtdcopyright}}}
         \fancyhead[LO]{{\py@HeaderFamily\nouppercase{\scalebox{1.5}{\@title} \\}}}
         \fancyhead[RE]{{\py@HeaderFamily\nouppercase{\scalebox{1.5}{\@title} \\}}}

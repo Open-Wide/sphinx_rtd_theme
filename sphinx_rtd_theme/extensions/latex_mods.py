@@ -64,7 +64,7 @@ class LaTeXRTDTranslator(BaseTranslator):
                                     path.basename(builder.config.latex_logo)
 
         if builder.config.subtitle:
-            self.elements['subtitle'] = path.basename(builder.config.subtitle)
+            self.elements['subtitle'] = builder.config.subtitle.upper()
 
         if builder.config.reference:
             self.elements['reference'] = u'{%s}' % builder.config.reference

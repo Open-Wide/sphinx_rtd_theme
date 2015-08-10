@@ -33,6 +33,7 @@
 % Change the title page to look a bit better, and fit in with the fncychap
 % ``Bjarne'' style a bit better.
 \renewcommand{\maketitle}{%
+    \newgeometry{top=1.5cm,bottom=1.5cm,right=1.5cm,left=1.5cm}
     \begin{titlepage}%
         \BgThispage
         \backgroundsetup{
@@ -62,14 +63,14 @@
             \endgroup
         \fi
         \begin{flushright}%
-            \vfill{%
+            %\vfill{%
                 \py@FrontPageSubtitleFamily
                 \rtdsubtitle
                 \par
-            }%
+            %}%
         \end{flushright}%\par
         \begin{flushleft}%
-            \vspace*{6cm}
+            \vspace*{7cm}
             \scalebox{1.5}{\py@FrontPageTitleFamily \@title}\par%
             {\py@FrontPageReferenceFamily{\rtdreference}} %
             {\py@FrontPageReleaseFamily \py@release\releaseinfo  |  }%
@@ -88,6 +89,7 @@
     \clearpage%
     \setcounter{footnote}{0}%
     \let\thanks\relax\let\maketitle\relax
+    \newgeometry{left=2.5cm,right=1.5cm,bottom=2.5cm,top=2.5cm}
 }
 
 

@@ -7,7 +7,6 @@
 
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesPackage{rtdsphinx}[2010/01/15 LaTeX package (Sphinx markup)]
-
 \RequirePackage{fancyhdr}
 \RequirePackage{textcomp}
 \RequirePackage{fancybox}
@@ -43,6 +42,7 @@
   \usepackage[pdftex]{graphicx}
 \fi
 
+\usepackage[left=2.5cm,right=1.5cm,bottom=2.5cm,top=2.5cm]{geometry}
 \usepackage[table]{xcolor}
 \usepackage{tcolorbox}
 \usepackage{sectsty}
@@ -698,7 +698,7 @@
     {section}% nom du titre
     {1}% niveau de titre
     {0em}% indentation
-    {-3.5em\@plus 1em \@minus .2em}%  espace vertical avant
+    {-2.5em\@plus 1em \@minus .2em}%  espace vertical avant
     {1em\@plus .2em}% espace vertical après
     {\py@SectionFamily}%  allure du titre
 }%
@@ -771,7 +771,7 @@
 %%%%%%%%%%%%
 
 \newcommand{\py@FrontPageTitleFamily}{\py@TitleFamily\em\Huge\scshape\bfseries\color{RTDMainColor}}
-\newcommand{\py@FrontPageSubtitleFamily}{\py@TitleFamily\em\Huge\scshape\color{RTDWhiteColor}}
+\newcommand{\py@FrontPageSubtitleFamily}{\py@TitleFamily\em\large\bfseries\color{RTDWhiteColor}}
 \newcommand{\py@FrontPageReferenceFamily}{\py@TitleFamily\em\Large\scshape\color{RTDMainColor}}
 \newcommand{\py@FrontPageReleaseFamily}{\py@TitleFamily\em\large\scshape\color{RTDSecondaryColor}}
 \newcommand{\py@FrontPageFamily}{\py@TitleFamily\normalsize\color{RTDSecondaryColor}}

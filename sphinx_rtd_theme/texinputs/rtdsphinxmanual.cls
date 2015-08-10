@@ -89,7 +89,7 @@
     \clearpage%
     \setcounter{footnote}{0}%
     \let\thanks\relax\let\maketitle\relax
-    \newgeometry{left=2.5cm,right=1.5cm,bottom=2.5cm,top=2.5cm}
+    \restoregeometry
 }
 
 

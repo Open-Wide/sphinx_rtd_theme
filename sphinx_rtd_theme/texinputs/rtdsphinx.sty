@@ -38,7 +38,7 @@
 
 % For graphicx, check if we are compiling under latex or pdflatex.
 \ifx\pdftexversion\undefined
-  \RequirePackage{graphicx}
+    \RequirePackage{graphicx}
 \else
   \RequirePackage[pdftex]{graphicx}
 \fi
@@ -56,6 +56,9 @@
 \RequirePackage{booktabs}
 \RequirePackage[pages=all]{background}
 \RequirePackage{lastpage}
+\RequirePackage{etoolbox}
+
+\usepackage{showframe}
 
 % background
 \backgroundsetup{
@@ -175,7 +178,7 @@
         \fancyfoot[LO,RE]{{\py@FooterFamily\nouppercase\tiny{\rtdcopyright}}}
         \fancyhead[LO]{{\py@HeaderFamily\nouppercase{\scalebox{1.5}{\@title} \\ \rightmark}}}
         \fancyhead[RE]{{\py@HeaderFamily\nouppercase{\scalebox{1.5}{\@title} \\ \leftmark}}}
-        \fancyhead[LE,RO]{{\py@HeaderFamily \rtdsubtitle \\ \rtdreference\ \py@release}}
+        \fancyhead[LE,RO]{{\py@HeaderFamily \rtdsubtitle \\ \rtdreference\space\version}}
         \renewcommand{\headrulewidth}{0pt}
         \renewcommand{\footrulewidth}{0.4pt}
         % define chaptermark with \@chappos when \@chappos is available for Japanese
@@ -194,7 +197,7 @@
         \fancyfoot[LO,RE]{{\py@FooterFamily\nouppercase\tiny{\rtdcopyright}}}
         \fancyhead[LO]{{\py@HeaderFamily\nouppercase{\scalebox{1.5}{\@title} \\}}}
         \fancyhead[RE]{{\py@HeaderFamily\nouppercase{\scalebox{1.5}{\@title} \\}}}
-        \fancyhead[LE,RO]{{\py@HeaderFamily \rtdsubtitle \\ \rtdreference\ \py@release}}
+        \fancyhead[LE,RO]{{\py@HeaderFamily \rtdsubtitle \\ \rtdreference\space\version}}
         \renewcommand{\headrulewidth}{0pt}
         \renewcommand{\footrulewidth}{0.4pt}
     }
@@ -206,7 +209,7 @@
         \fancyfoot[LO,RE]{{\py@FooterFamily\nouppercase\tiny{\rtdcopyright}}}
         \fancyhead[LO]{{\py@HeaderFamily\nouppercase{\scalebox{1.5}{\@title} \\}}}
         \fancyhead[RE]{{\py@HeaderFamily\nouppercase{\scalebox{1.5}{\@title} \\}}}
-        \fancyhead[LE,RO]{{\py@HeaderFamily \rtdsubtitle \\ \rtdreference\ \py@release}}
+        \fancyhead[LE,RO]{{\py@HeaderFamily \rtdsubtitle \\ \rtdreference\space\version}}
         \renewcommand{\headrulewidth}{0pt}
         \renewcommand{\footrulewidth}{0.4pt}
     }
@@ -653,7 +656,6 @@
 \newcommand{\py@ChapterCounterTitleFamily}{\scshape\strut\color{ChapterColor}}
 \newcommand{\py@ChapterFamily}{\py@TitleFamily\mdseries\color{ChapterColor}\Huge\scshape}
 
-\def\thickhrulefill{\leavevmode \leaders \hrule height 1ex \hfill \kern \z@}
 \def\@makechapterhead#1{%
     \reset@font
     \hbox{%
@@ -695,6 +697,7 @@
     \vskip 20\p@
 }
 
+\titlespacing*{\chapter} {0pt}{0pt}{20pt}
 
 \colorlet{SectionColor}{RTDMainColor}
 \newcommand{\py@SectionFamily}{\py@TitleFamily\huge\color{SectionColor}\scshape}
@@ -716,7 +719,7 @@
     \@startsection%
     {subsection}%
     {2}%
-    {1em}%
+    {2em}%
     {-2.5em\@plus 1em \@minus .2em}%
     {1em\@plus .2em}%
     {\py@SubSectionFamily}%

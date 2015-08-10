@@ -28,7 +28,6 @@ class LaTeXRTDTranslator(BaseTranslator):
     
     default_elements = BaseTranslator.default_elements
     
-#    default_elements['maketitle'] = '\pagestyle{firstpage}\n\\maketitle\n\pagestyle{normal}'
     default_elements['maketitle'] = '\\maketitle'
     default_elements['shorthandoff'] = '\\pagenumbering{arabic}'
     default_elements['backgroundimage'] = ''

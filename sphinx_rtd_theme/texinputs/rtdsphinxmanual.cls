@@ -73,7 +73,7 @@
             \vspace*{7cm}
             \scalebox{1.5}{\py@FrontPageTitleFamily \@title}\par%
             {\py@FrontPageReferenceFamily{\rtdreference}} %
-            {\py@FrontPageReleaseFamily \py@release\releaseinfo  |  }%
+            {\py@FrontPageReleaseFamily \py@release\releaseinfo\space|\space}%
             {\py@FrontPageFamily \@date \par}
             \vspace*{3cm}
         \end{flushleft}%\par

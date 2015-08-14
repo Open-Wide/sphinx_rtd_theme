@@ -1,0 +1,13 @@
+{
+  "name": "sass-pygments",
+  "homepage": "https://github.com/dwayne/sass-pygments",
+  "_release": "20bc89e358",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "20bc89e358cd3b62af3442dd154b92cf825fa884"
+  },
+  "_source": "https://github.com/dwayne/sass-pygments.git",
+  "_target": "master",
+  "_originalSource": "https://github.com/dwayne/sass-pygments.git"
+}

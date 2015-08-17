@@ -58,7 +58,7 @@
 \RequirePackage{lastpage}
 \RequirePackage{etoolbox}
 
-\usepackage{showframe}
+%\usepackage{showframe}
 
 % background
 \backgroundsetup{
@@ -67,7 +67,7 @@
     opacity=1,
     angle=0,
     placement=top,
-    vshift=-0.7cm,
+    vshift=-0.8cm,
     contents={%
         \rtdheaderbackgroundimage
     }%
@@ -101,8 +101,6 @@
 \renewcommand*\ttfamily{cmrt}
 
 \renewcommand{\familydefault}{\sfdefault}
-
-\setlength{\headheight}{15pt}
 
 % Uncomment these two lines to ignore the paper size and make the page 
 % size more like a typical published manual.
@@ -162,7 +160,8 @@
 \pagestyle{empty}               % start this way
 
 % Use this to set the font family for headers and other decor:
-\newcommand{\py@HeaderFamily}{\sffamily\bfseries\color{RTDWhiteColor}}
+\newcommand{\py@HeaderTitleFamily}{\sffamily\bfseries\color{RTDWhiteColor}}
+\newcommand{\py@HeaderFamily}{\sffamily\color{RTDWhiteColor}}
 \newcommand{\py@FooterFamily}{\sffamily\mdseries}
 \newcommand{\py@TitleFamily}{\sffamily\mdseries}
 
@@ -176,8 +175,8 @@
         \fancyfootoffset{1cm}
         \fancyfoot[LE,RO]{{\py@FooterFamily\thepage\ / \pageref*{LastPage}}}
         \fancyfoot[LO,RE]{{\py@FooterFamily\nouppercase\tiny{\rtdcopyright}}}
-        \fancyhead[LO]{{\py@HeaderFamily\nouppercase{\scalebox{1.5}{\@title} \\ \rightmark}}}
-        \fancyhead[RE]{{\py@HeaderFamily\nouppercase{\scalebox{1.5}{\@title} \\ \leftmark}}}
+        \fancyhead[LO]{{\py@HeaderTitleFamily\nouppercase{\scalebox{1.5}{\@title} \\ \leftmark}}}
+        \fancyhead[RE]{{\py@HeaderTitleFamily\nouppercase{\scalebox{1.5}{\@title} \\ \leftmark}}}
         \fancyhead[LE,RO]{{\py@HeaderFamily \rtdsubtitle \\ \rtdreference\space\version}}
         \renewcommand{\headrulewidth}{0pt}
         \renewcommand{\footrulewidth}{0.4pt}
@@ -195,8 +194,8 @@
         \fancyfootoffset{1cm}
         \fancyfoot[LE,RO]{{\py@FooterFamily\thepage\ / \pageref*{LastPage}}}
         \fancyfoot[LO,RE]{{\py@FooterFamily\nouppercase\tiny{\rtdcopyright}}}
-        \fancyhead[LO]{{\py@HeaderFamily\nouppercase{\scalebox{1.5}{\@title} \\}}}
-        \fancyhead[RE]{{\py@HeaderFamily\nouppercase{\scalebox{1.5}{\@title} \\}}}
+        \fancyhead[LO]{{\py@HeaderTitleFamily\nouppercase{\scalebox{1.5}{\@title} \\ \leftmark}}}
+        \fancyhead[RE]{{\py@HeaderTitleFamily\nouppercase{\scalebox{1.5}{\@title} \\ \leftmark}}}
         \fancyhead[LE,RO]{{\py@HeaderFamily \rtdsubtitle \\ \rtdreference\space\version}}
         \renewcommand{\headrulewidth}{0pt}
         \renewcommand{\footrulewidth}{0.4pt}
@@ -207,8 +206,8 @@
         \fancyfootoffset{1cm}
         \fancyfoot[LE,RO]{{\py@FooterFamily\thepage}}
         \fancyfoot[LO,RE]{{\py@FooterFamily\nouppercase\tiny{\rtdcopyright}}}
-        \fancyhead[LO]{{\py@HeaderFamily\nouppercase{\scalebox{1.5}{\@title} \\}}}
-        \fancyhead[RE]{{\py@HeaderFamily\nouppercase{\scalebox{1.5}{\@title} \\}}}
+        \fancyhead[LO]{{\py@HeaderTitleFamily\nouppercase{\scalebox{1.5}{\@title} \\ \leftmark}}}
+        \fancyhead[RE]{{\py@HeaderTitleFamily\nouppercase{\scalebox{1.5}{\@title} \\ \leftmark}}}
         \fancyhead[LE,RO]{{\py@HeaderFamily \rtdsubtitle \\ \rtdreference\space\version}}
         \renewcommand{\headrulewidth}{0pt}
         \renewcommand{\footrulewidth}{0.4pt}
@@ -652,52 +651,27 @@
 \colorlet{ChapterCounterColor}{RTDWhiteColor}
 \colorlet{ChapterCounterBackgroundColor}{RTDMainColor}
 
-\newcommand{\py@ChapterCounterFamily}{\color{ChapterCounterColor}\LARGE\bfseries}
-\newcommand{\py@ChapterCounterTitleFamily}{\scshape\strut\color{ChapterColor}}
+\newcommand{\py@ChapterCounterFamily}{\color{ChapterCounterColor}\cellcolor{ChapterColor}\LARGE\bfseries}
+\newcommand{\py@ChapterCounterTitleFamily}{\scshape\strut\color{ChapterCounterColor}\cellcolor{ChapterColor}}
 \newcommand{\py@ChapterFamily}{\py@TitleFamily\mdseries\color{ChapterColor}\Huge\scshape}
 
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
 \def\@makechapterhead#1{%
-    \reset@font
-    \hbox{%
-        \vbox{%
-            \hsize=6em%
-            \begin{tabular}{c}
-                \rowcolor{RTDWhiteColor} \py@ChapterCounterTitleFamily \@chapapp{} \\
-                \rowcolor{RTDWhiteColor} \colorbox{RTDMainBackgroundColor}{\vbox{\hbox{\vbox to 1mm{}}\hbox{\py@ChapterCounterFamily\hspace{1mm}\thechapter\hspace{1mm}}\hbox{\vbox to 6em{}}}}%
-            \end{tabular}%
-            }%
-        \vbox{%
-            \advance\hsize by -6em
-            \par
-            \vskip 1em%
-            \parbox{35em}{%
-                \py@ChapterFamily #1}%
-            }%
-        }%
-    \vskip 20\p@
+    \begin{tabular}{C{5em} L{34em}}
+        \py@ChapterCounterTitleFamily \@chapapp{} \newline \py@ChapterCounterFamily \thechapter & \py@ChapterFamily #1 \tabularnewline
+    \end{tabular}%
+    \vspace*{1cm}%
 }
 \def\@makeschapterhead#1{%
-    \reset@font
-    \hbox{%
-        \vbox{%
-            \hsize=6em%
-            \begin{tabular}{c}
-                \colorbox{RTDMainBackgroundColor}{\vbox{\hbox{\vbox to 1mm{}}\hbox{\py@ChapterCounterFamily \hspace{1mm}\phantom{\thechapter}\hspace{1mm}}\hbox{\vbox to 6em{}}}}%
-            \end{tabular}%
-            }%
-        \vbox{%
-            \advance\hsize by -6em
-            \par
-            \vskip 1em%
-            %\hspace{0em}%
-            \parbox{35em}{%
-                \py@ChapterFamily #1}%
-            }%
-        }%
-    \vskip 20\p@
+        \vspace*{0.3cm}%
+        {\py@ChapterFamily #1}
+        \vspace*{1cm}%
 }
 
-\titlespacing*{\chapter} {0pt}{0pt}{20pt}
+%\titlespacing*{\chapter} {0pt}{0pt}{20pt}
 
 \colorlet{SectionColor}{RTDMainColor}
 \newcommand{\py@SectionFamily}{\py@TitleFamily\huge\color{SectionColor}\scshape}

@@ -30,6 +30,7 @@ class LaTeXRTDTranslator(BaseTranslator):
     
     default_elements['maketitle'] = '\\maketitle'
     default_elements['shorthandoff'] = '\\pagenumbering{arabic}'
+    default_elements['makeindex'] = '\\makeindex[intoc]'
     default_elements['backgroundimage'] = ''
     default_elements['headerbackgroundimage'] = ''
     default_elements['subtitle'] = ''

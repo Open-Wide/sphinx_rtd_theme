@@ -130,6 +130,7 @@
     \clearpage%
   }%
   \pagenumbering{arabic}%
+  \clearpage%
   \@ifundefined{fancyhf}{}{\pagestyle{normal}}%
 }
 \pagenumbering{alph}

@@ -655,12 +655,12 @@
 \newcommand{\py@ChapterCounterTitleFamily}{\scshape\strut\color{ChapterCounterColor}\cellcolor{ChapterColor}}
 \newcommand{\py@ChapterFamily}{\py@TitleFamily\mdseries\color{ChapterColor}\Huge\scshape}
 
-\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{\TocL}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{\TocC}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{\TocR}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 
 \def\@makechapterhead#1{%
-    \begin{tabular}{C{5em} L{34em}}
+    \begin{tabular}{\TocC{5em} \TocL{34em}}
         \py@ChapterCounterTitleFamily \@chapapp{} \newline \py@ChapterCounterFamily \thechapter & \py@ChapterFamily #1 \tabularnewline
     \end{tabular}%
     \vspace*{1cm}%

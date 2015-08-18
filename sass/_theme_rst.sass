@@ -13,6 +13,11 @@
 //    4. If you have changes for mobile/tablet, put them at the bottom of the sass file.
 // --------------------------------------------------------------------------------------------------------------------
 
+.wy-table-striped tr:nth-child(2n-1) td
+  background: none
+.wy-table-striped tr:nth-child(2n) td
+  background-color: $table-stripe-color
+
 .rst-content
   // Sphinx by default applies HxW style attributes to images. This fixes that oversite.
   img

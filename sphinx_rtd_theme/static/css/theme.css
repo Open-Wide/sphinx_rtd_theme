@@ -5054,6 +5054,14 @@ footer p {
     height: auto;
   }
 }
+.wy-table-striped tr:nth-child(2n-1) td, .rst-content table.docutils:not(.field-list) tr:nth-child(2n-1) td {
+  background: none;
+}
+
+.wy-table-striped tr:nth-child(2n) td, .rst-content table.docutils:not(.field-list) tr:nth-child(2n) td {
+  background-color: #f3f6f6;
+}
+
 .rst-content img {
   max-width: 100%;
   height: auto !important;

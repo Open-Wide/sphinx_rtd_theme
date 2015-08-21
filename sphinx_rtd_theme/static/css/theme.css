@@ -5200,6 +5200,7 @@ footer p {
   background: none;
   border: none;
   color: #777777;
+  width: 100%;
 }
 .rst-content table.docutils.citation td, .rst-content table.docutils.citation tr, .rst-content table.docutils.footnote td, .rst-content table.docutils.footnote tr {
   border: none;

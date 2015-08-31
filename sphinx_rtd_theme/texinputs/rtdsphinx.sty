@@ -60,6 +60,10 @@
 
 %\usepackage{showframe}
 
+\frenchbsetup{StandardLists=true}
+
+\RequirePackage{pifont}
+
 % background
 \backgroundsetup{
     scale=1,
@@ -759,3 +763,12 @@
 \newcommand{\py@FrontPageReferenceFamily}{\py@TitleFamily\em\Large\scshape\color{RTDMainColor}}
 \newcommand{\py@FrontPageReleaseFamily}{\py@TitleFamily\em\large\scshape\color{RTDSecondaryColor}}
 \newcommand{\py@FrontPageFamily}{\py@TitleFamily\normalsize\color{RTDSecondaryColor}}
+
+%%%%%%
+% List
+%%%%%%
+
+\renewcommand*{\labelitemi}{\large\textcolor{RTDMainColor}{\ding{228}}}
+\renewcommand*{\labelitemii}{\normalsize\textcolor{RTDMainColor}{\ding{228}}}
+\renewcommand*{\labelitemiii}{\small\textcolor{RTDMainColor}{\ding{228}}}
+\renewcommand*{\labelitemiv}{\labelitemiii}

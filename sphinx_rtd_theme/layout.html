@@ -100,6 +100,18 @@
         {% endif %}
         </a>
 
+        {% if theme_display_version %}
+          {%- set nav_version = version %}
+          {% if READTHEDOCS and current_version %}
+            {%- set nav_version = current_version %}
+          {% endif %}
+          {% if nav_version %}
+            <div class="version">
+              {{ nav_version }}
+            </div>
+          {% endif %}
+        {% endif %}
+
         {% include "searchbox.html" %}
 
         {% endblock %}
@@ -107,7 +119,7 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         {% block menu %}
-          {% set toctree = toctree(maxdepth=4, collapse=False, includehidden=True) %}
+          {% set toctree = toctree(maxdepth=4, collapse=theme_collapse_navigation, includehidden=True) %}
           {% if toctree %}
               {{ toctree }}
           {% else %}

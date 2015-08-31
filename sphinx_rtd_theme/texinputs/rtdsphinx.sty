@@ -518,7 +518,7 @@
 \RequirePackage[colorlinks,breaklinks,
                 linkcolor=InnerLinkColor,filecolor=OuterLinkColor,
                 menucolor=OuterLinkColor,urlcolor=OuterLinkColor,
-                citecolor=InnerLinkColor]{hyperref}
+                citecolor=InnerLinkColor,final=true,draft=false,debug=false]{hyperref}
 % Fix anchor placement for figures with captions.
 % (Note: we don't use a package option here; instead, we give an explicit
 % \capstart for figures that actually have a caption.)
@@ -671,12 +671,13 @@
     \vspace*{1cm}%
 }
 \def\@makeschapterhead#1{%
-        \vspace*{0.3cm}%
-        {\py@ChapterFamily #1}
-        \vspace*{1cm}%
-}
-
-%\titlespacing*{\chapter} {0pt}{0pt}{20pt}
+  \vspace*{5\p@}
+  {\parindent \z@ \raggedright
+    \normalfont
+    \interlinepenalty\@M
+    \py@ChapterFamily \bfseries  #1\par\nobreak
+    %\vskip 40\p@
+  }}
 
 \colorlet{SectionColor}{RTDMainColor}
 \newcommand{\py@SectionFamily}{\py@TitleFamily\huge\color{SectionColor}\scshape}

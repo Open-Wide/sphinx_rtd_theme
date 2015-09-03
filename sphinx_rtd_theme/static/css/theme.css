@@ -5468,8 +5468,8 @@ code, .rst-content tt, .rst-content code, .rst-content tt, .rst-content tt, .rst
 }
 
 .wy-side-nav-search > div.subtitle {
-  margin-top: -0.4045em;
-  margin-bottom: 0.809em;
+  margin-top: -0.5em;
+  margin-bottom: 0;
   font-weight: normal;
   color: rgba(255, 255, 255, 0.3);
 }
@@ -5478,12 +5478,20 @@ code, .rst-content tt, .rst-content code, .rst-content tt, .rst-content tt, .rst
   text-align: center;
   border-top: 1px solid #555;
   margin: 10px auto 0;
-  padding-top: 10px;
+  padding-top: 15px;
   width: 85%;
 }
 
 .wy-menu-vertical #rtd-search-form input[name="q"] {
+  border: 1px solid #666;
   border-radius: 5px;
+  box-shadow: none;
+  color: #999;
+  background: #4e4a4a;
+  width: 100%;
+}
+.wy-menu-vertical #rtd-search-form input[name="q"]:focus, .wy-menu-vertical #rtd-search-form input[name="q"]:hover {
+  color: #FFF;
 }
 
 .fa-arrow-circle-left::before, .icon-circle-arrow-left::before, .fa-arrow-circle-right::before, .icon-circle-arrow-right::before {

@@ -107,9 +107,15 @@
         {% endif %}
         </a>
 
-        {% if subtitle %}
+        {% if theme_subtitle %}
           <div class="subtitle">
-            {{ subtitle }}
+            {{ theme_subtitle }}
+          </div>
+        {% endif %}
+
+        {% if theme_reference %}
+          <div class="reference">
+            {{ theme_reference }}
           </div>
         {% endif %}
 

@@ -25,7 +25,6 @@ def get_latex_theme_files():
     """Return list of HTML theme paths."""
     cur_dir = path.abspath(path.dirname(path.dirname(__file__)))
     return [
-#        path.join(cur_dir, 'sphinx_rtd_theme', 'texinputs', 'openwide.sty'),
         path.join(cur_dir, 'sphinx_rtd_theme', 'texinputs', 'rtdsphinx.sty'),
         path.join(cur_dir, 'sphinx_rtd_theme', 'texinputs', 'rtdsphinxhowto.cls'),
         path.join(cur_dir, 'sphinx_rtd_theme', 'texinputs', 'rtdsphinxmanual.cls')
@@ -47,4 +46,4 @@ def setup(app):
     app.add_config_value('latex_footer_image', latex_footer_image, False)
     app.add_config_value('subtitle', False, False)
     app.add_config_value('reference', False, False)
-    
+

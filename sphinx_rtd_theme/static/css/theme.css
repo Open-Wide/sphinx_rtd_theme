@@ -5543,6 +5543,15 @@ code, .rst-content tt, .rst-content code, .rst-content tt, .rst-content tt, .rst
 .rst-content footer .version {
   float: right;
 }
+.rst-content a.download tt.xref, .rst-content a.download code.xref {
+  font-weight: normal;
+}
+.rst-content .section table ul {
+  margin-bottom: 0;
+}
+.rst-content .section table ul li {
+  margin-left: 0;
+}
 
 span[id*='MathJax-Span'] {
   color: #404040;

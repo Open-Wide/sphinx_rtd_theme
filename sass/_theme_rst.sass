@@ -413,6 +413,11 @@ code, .rst-content tt, .rst-content code
   margin-top: -0.5em
   margin-bottom: 0
   font-weight: normal
+  font-size: 0.8em
+  color: rgba(255, 255, 255, 0.3)
+
+.wy-side-nav-search > div.reference
+  font-size: 0.7em
   color: rgba(255, 255, 255, 0.3)
 
 .wy-menu-vertical #rtd-search-form
@@ -479,14 +484,33 @@ code, .rst-content tt, .rst-content code
       font-size: 40%
       padding-top: 11px
 
-  .admonition-a-faire
-    @extend .admonition-todo
-
-    ul li:before
-      color: #e0853a
+  .admonition
+    box-shadow: 0 0 5px rgba(128, 128, 128, 0.5)
 
     .admonition-title:before
-      @extend .fa-check
+      @extend .fa-info-circle
+
+    .admonition-title
+      text-shadow: 0 1px 1px rgba(85, 85, 85, 0.55)
+
+    &.admonition-a-faire
+      @extend .admonition-todo
+
+      ul li:before
+        color: #e0853a
+
+      .admonition-title:before
+        @extend .fa-check
+
+    &.seealso
+      .admonition-title:before
+        @extend .fa-external-link
+
+    &.admonition-tests-fonctionnels, &.admonition-test-fonctionnel
+
+      .admonition-title:before
+        @extend .fa-check-square-o
+
 
 
   footer .version

@@ -14,21 +14,6 @@
 
   <div role="contentinfo">
 
-    {% if theme_display_version %}
-      {%- set nav_version = version %}
-
-      {% if READTHEDOCS and current_version %}
-        {%- set nav_version = current_version %}
-      {% endif %}
-
-      {% if nav_version %}
-        <div class="version">
-          Version: {{ nav_version }}
-        </div>
-      {% endif %}
-
-    {% endif %}
-
     <p>
     {%- if show_copyright %}
       {%- if hasdoc('copyright') %}

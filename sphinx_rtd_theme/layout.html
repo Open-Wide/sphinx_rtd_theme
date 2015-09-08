@@ -116,6 +116,10 @@
         {% if theme_reference %}
           <div class="reference">
             {{ theme_reference }}
+
+            {% if release %}
+            - v{{ release }}
+            {% endif %}
           </div>
         {% endif %}
 

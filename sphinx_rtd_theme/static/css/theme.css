@@ -5076,6 +5076,10 @@ footer span.commit code, footer span.commit .rst-content tt, .rst-content footer
     height: auto;
   }
 }
+.wy-plain-list-decimal li ul li, .rst-content .section ol li ul li, .rst-content ol.arabic li ul li, article ol li ul li {
+  list-style: none;
+}
+
 .wy-table-striped tr:nth-child(2n-1) td, .rst-content table.docutils:not(.field-list) tr:nth-child(2n-1) td {
   background: none;
 }

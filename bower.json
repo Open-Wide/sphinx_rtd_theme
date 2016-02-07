@@ -1,6 +1,6 @@
 {
   "name": "sphinx-rtd-theme",
-  "version": "0.1.7",
+  "version": "0.1.9",
   "homepage": "https://github.com/snide/wyrm",
   "authors": [
     "Dave Snider <dave.snider@gmail.com>"
@@ -8,7 +8,7 @@
   "description": "Sphinx theme for readthedocs.org.",
   "license": "MIT",
   "main": [
-    "dist/**"
+    "js/theme.js"
   ],
   "ignore": [
     "docs",
@@ -28,6 +28,11 @@
   ],
   "devDependencies": {
     "wyrm": "~0.0.x"
+  },
+  "dependencies": {
+    "lato-googlefont": "*",
+    "robotoslab-googlefont": "*",
+    "inconsolata-googlefont": "*",
+    "font-awesome": "4.2.0"
   }
 }
-

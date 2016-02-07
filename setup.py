@@ -29,7 +29,6 @@ setup(
         'texinputs/*.*',
     ]},
     include_package_data=True,
-    install_requires=open('requirements.txt').read().splitlines(),
     classifiers=[
         'Development Status :: 3 - Alpha',
         'License :: OSI Approved :: BSD License',

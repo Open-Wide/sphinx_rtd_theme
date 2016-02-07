@@ -9,7 +9,7 @@ from os import path
 from sphinx_rtd_theme import directives
 from sphinx_rtd_theme.extensions import latex_mods
 
-VERSION = (0, 1, 8)
+VERSION = (0, 1, 9)
 
 __version__ = ".".join(str(v) for v in VERSION)
 __version_full__ = __version__
